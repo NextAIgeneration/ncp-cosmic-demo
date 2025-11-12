@@ -2,7 +2,7 @@
 
 **Target Duration**: 15-20 minutes
 **Audience**: Melina (NCP Wallonie), Horizon Europe reviewers
-**Goal**: Prove technical feasibility + Blitzkrieg strategy viability
+**Goal**: Prove technical feasibility + Fast-Track Cloud Credits strategy viability
 
 ---
 
@@ -12,11 +12,11 @@
 
 **Text**:
 > **COSMIC Projects - NCP Wallonie Demo**
-> Technical Feasibility + Blitzkrieg Cloud Credits Strategy
+> Technical Feasibility + Stratégie Accélérée Cloud Credits
 > Vincent Caputo (CTO FFT.io) + Frédérique Fourez (Lead CJEU Formation)
 > 13-14 November 2025
 
-**Hook**: "Nous avons l'infrastructure, les compétences, et les prototypes. Et nous avons 48h pour activer 536K€ de crédits cloud."
+**Hook**: "Nous avons l'infrastructure, les compétences, et les prototypes. Et nous activons dans les prochains jours 536K€ de crédits cloud pour maximiser nos chances de réussite."
 
 ---
 
@@ -36,7 +36,7 @@
 
 ## Slide 3: La Solution - Double Objectif (1 minute)
 
-**Visual**: Venn diagram showing NCP Demo ∩ Blitzkrieg Strategy
+**Visual**: Venn diagram showing NCP Demo ∩ Activation Rapide 536K€
 
 **1️⃣ NCP Wallonie Demo (Feasibility Proof)**
 - ✅ Mac Studio M1 Max 24/7 operational
@@ -44,8 +44,8 @@
 - ✅ LoRaWAN network deployed (Liège campus proto)
 - ✅ CJEU Formation production system (30 students live)
 
-**2️⃣ Blitzkrieg Strategy (536K€ → 6 months)**
-- ✅ Activation samedi 16 Nov 2025
+**2️⃣ Sprint 6 Mois - Burn & Migrate (536K€)**
+- ✅ Activation imminente (prochains jours)
 - ✅ Burn €90K/mois (Dec-Mai)
 - ✅ Exit cloud Jun 2026
 - ✅ 100% European sovereignty Aug 2026
@@ -103,9 +103,9 @@ Phase 2 (Jun 2026+): 100% EU
 
 ---
 
-## Slide 6: Timeline Blitzkrieg (2 minutes)
+## Slide 6: Timeline Sprint 6 Mois (2 minutes)
 
-**Visual**: Gantt chart from `Blitzkrieg-6-Months.mmd`
+**Visual**: Gantt chart from `Sprint-6-Months.mmd`
 
 **Critical Path**:
 ```
@@ -322,7 +322,7 @@ mosquitto_sub -h localhost -t "cosmic/sensors/#" -v
 **Visual**: Contact card + QR code to GitHub repo
 
 **Ask**:
-> "Nous demandons votre soutien pour la candidature Horizon Europe COSMIC Projects. Vous avez vu les preuves de faisabilité, la stratégie Blitzkrieg, et l'architecture anti-fragile. Nous sommes prêts à commencer samedi."
+> "Nous demandons votre soutien pour la candidature Horizon Europe COSMIC Projects. Vous avez vu les preuves de faisabilité, notre stratégie accélérée, et l'architecture anti-fragile. Nous sommes prêts à activer les crédits cloud dans les prochains jours."
 
 **Contact**:
 - Vincent Caputo: vincent@fredfrenchtouch.com
@@ -355,4 +355,4 @@ mosquitto_sub -h localhost -t "cosmic/sensors/#" -v
 
 **Status**: ✅ Ready for presentation
 **Last Updated**: 2025-11-12
-**Version**: 1.0 (Blitzkrieg Edition)
+**Version**: 1.1 (Sprint 6 Mois Edition)

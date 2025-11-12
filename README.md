@@ -2,11 +2,11 @@
 
 **For**: Melina (NCP Wallonie) - Event 13-14 November 2025
 **From**: Vincent Caputo (FFT.io) + Frédérique Fourez (Lead CJEU Formation)
-**Context**: Horizon Europe application + Cloud Credits Blitzkrieg Strategy
+**Context**: Horizon Europe application + Stratégie Accélérée Cloud Credits
 
 ---
 
-## 🎯 Double Objectif : NCP Demo + Blitzkrieg Faisabilité
+## 🎯 Double Objectif : NCP Demo + Activation Rapide 536K€
 
 ### 1️⃣ **Démo Faisabilité Technique (NCP Wallonie)**
 **Objectif**: Prouver que les 4 projets COSMIC sont **techniquement réalisables** avec ressources existantes FFT.io
@@ -23,10 +23,10 @@
 - Ollama local inference (<0.5s latency)
 - LoRaWAN gateways (Belgium network)
 
-### 2️⃣ **Stratégie Blitzkrieg 536K€ Crédits Cloud**
+### 2️⃣ **Sprint 6 Mois - Burn & Migrate 536K€ Crédits Cloud**
 **Objectif**: Démontrer capacité à **brûler 536K€ de crédits cloud** en 6 mois (Dec 2025-Mai 2026) puis **migrer vers infrastructure EU souveraine** (Jun 2026)
 
-**Timeline Blitzkrieg**:
+**Timeline Sprint 6 Mois**:
 ```
 16 Nov 2025  → Activation 536K€ crédits (Microsoft 138K, Google 230K, AWS 92K, NVIDIA 76K)
 Dec 2025     → Setup infrastructure + BelgBERT data prep (burn €40K)
@@ -59,7 +59,7 @@ ncp-cosmic-demo/
 │   │
 │   ├── gantt/                         (Visualisation timeline)
 │   │   ├── COSMIC-Roadmap.mmd         (Mermaid Gantt chart)
-│   │   └── Blitzkrieg-6-Months.mmd    (Dec 2025-Jun 2026)
+│   │   └── Sprint-6-Months.mmd        (Dec 2025-Jun 2026)
 │   │
 │   └── demo/                          (Assets pour présentation NCP)
 │       ├── architecture-diagram.mmd   (Architecture technique)
@@ -93,7 +93,7 @@ ncp-cosmic-demo/
 - Cas d'usage détaillés (CJEU Formation, AgriTech, SmartCity, LegalTech)
 - FFT Tournai Hub (Mac Studio M1 Max flagship node)
 - Pricing models (€5-€150/mois SaaS, €110-€8K hardware)
-- Stratégie Blitzkrieg 536K€ cloud credits
+- Fast-Track Cloud Credits 536K€ (activation imminente)
 
 **Audience**: Decision-makers, technical leads, investors
 
@@ -156,8 +156,8 @@ ncp-cosmic-demo/
 
 ---
 
-**2. Stratégie Blitzkrieg = Window Closing**
-> "NVIDIA +25% en 3 mois ($4T→$5T) = AI Bubble peak. Cloud credits disponibles NOW, fermeront Q2 2026. FFT active samedi 16 Nov (536K€), burn 6 mois, exit cloud Jun 2026 = 100% souveraineté européenne."
+**2. Fast-Track Cloud Credits = Window Closing**
+> "NVIDIA +25% en 3 mois ($4T→$5T) = AI Bubble peak. Cloud credits disponibles NOW, fermeront Q2 2026. FFT active dans les prochains jours (536K€), Sprint 6 mois, exit cloud Jun 2026 = 100% souveraineté européenne."
 
 **Timeline critique**:
 - ✅ 16 Nov : Activation 536K€ (Microsoft 138K, Google 230K, AWS 92K)
