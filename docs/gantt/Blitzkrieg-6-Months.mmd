@@ -1,0 +1,48 @@
+```mermaid
+gantt
+    title Blitzkrieg Strategy - 536K€ Cloud Credits Burn (6 Months)
+    dateFormat YYYY-MM-DD
+
+    section Activation & Setup (Nov-Dec 2025)
+    Samedi 16 Nov: Activation 536K€           :crit, milestone, 2025-11-16, 1d
+    Microsoft for Startups (138K€)            :m1, 2025-11-16, 1d
+    Google Cloud AI (230K€)                   :g1, 2025-11-16, 1d
+    AWS Activate (92K€)                       :a1, 2025-11-16, 1d
+    NVIDIA Inception (76K€)                   :n1, 2025-11-16, 1d
+    Setup Azure Cosmos DB                     :m2, 2025-11-18, 2025-11-25
+    Setup Google TPU v4                       :g2, 2025-11-18, 2025-11-25
+    Setup AWS IoT Core                        :a2, 2025-11-18, 2025-11-25
+    BelgBERT data prep (150K EPCs)            :prep, 2025-12-01, 2025-12-31
+    LoRaWAN proto (10 sensors)                :proto, 2025-12-15, 2025-12-31
+    Burn Dec: €40K                            :burn1, 2025-12-01, 2025-12-31
+
+    section Training Phase 1 (Jan-Apr 2026)
+    BelgBERT 3 langues (FR/NL/DE)             :train1, 2026-01-01, 2026-04-30
+    Google TPU v4 intensive use               :crit, tpu1, 2026-01-01, 2026-04-30
+    Azure storage scaling                     :az1, 2026-01-01, 2026-04-30
+    AWS IoT data ingestion                    :aws1, 2026-01-01, 2026-04-30
+    First pilots deployment                   :pilot1, 2026-02-01, 2026-04-30
+    Burn Jan-Apr: €270K                       :crit, burn2, 2026-01-01, 2026-04-30
+
+    section Training Phase 2 + Scaling (Mai 2026)
+    BelgBERT 24 langues EU                    :crit, train2, 2026-05-01, 2026-05-31
+    Aggressive TPU burn (final month)         :crit, tpu2, 2026-05-01, 2026-05-31
+    Scaling pilots (50 farms, 10 cities)      :scale1, 2026-05-01, 2026-05-31
+    Burn Mai: €226K final                     :crit, burn3, 2026-05-01, 2026-05-31
+    Total 536K€ burned                        :milestone, 2026-05-31, 1d
+
+    section Migration (Jun-Jul 2026)
+    Hardware procurement                      :hw1, 2026-06-01, 2026-06-30
+    Mac Studio M2 Ultra (€8K)                 :hw2, 2026-06-01, 2026-06-15
+    Hetzner AX102 x2 (€10K)                   :hw3, 2026-06-01, 2026-06-15
+    Data migration cloud → hardware           :mig1, 2026-06-15, 2026-07-15
+    Models migration (BelgBERT 24 lang)       :mig2, 2026-06-20, 2026-07-15
+    Zero US cloud dependency                  :milestone, 2026-07-15, 1d
+
+    section European Sovereignty (Aug 2026+)
+    100% EU infrastructure                    :crit, milestone, 2026-08-01, 1d
+    Production Hetzner Finland                :prod1, 2026-08-01, 2026-12-31
+    Cost: €460/month sustainable              :cost1, 2026-08-01, 2026-12-31
+    OpenAI/Mistral faillite probable          :done, fail1, 2026-09-01, 2027-06-30
+    FFT Last Man Standing                     :crit, milestone, 2027-01-01, 1d
+```

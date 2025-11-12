@@ -1,0 +1,45 @@
+```mermaid
+gantt
+    title COSMIC Projects Roadmap (2025-2028)
+    dateFormat YYYY-MM-DD
+
+    section Phase 0: Preparation
+    Activation crédits cloud (536K€)           :crit, milestone, 2025-11-16, 1d
+    Setup infrastructure Azure/Google/AWS      :active, prep1, 2025-11-16, 2025-12-15
+    BelgBERT corpus prep (150K EPCs)           :prep2, 2025-12-01, 2025-12-31
+    LoRaWAN sensors proto (10 units)           :prep3, 2025-12-15, 2025-12-31
+
+    section Phase 1: Foundation (Jan-Apr 2026)
+    BelgBERT Training Phase 1 (3 langues)      :p1-1, 2026-01-01, 2026-04-30
+    COSMIC-1 RAG pilot (ULiège test)           :p1-2, 2026-02-01, 2026-04-30
+    COSMIC-2 AgriSurvey (10 farms)             :p1-3, 2026-01-15, 2026-04-30
+    COSMIC-3 CitizenHub MVP                    :p1-4, 2026-02-01, 2026-04-30
+    COSMIC-4 Econergy (5 buildings)            :p1-5, 2026-03-01, 2026-04-30
+    Cloud burn €270K                           :crit, p1-6, 2026-01-01, 2026-04-30
+
+    section Phase 2: Scaling + Exit Cloud (Mai-Aug 2026)
+    BelgBERT Training Phase 2 (24 langues)     :p2-1, 2026-05-01, 2026-07-31
+    Migration hardware propre (€18K)           :crit, milestone, p2-2, 2026-06-01, 2026-07-15
+    Cloud burn final €226K                     :crit, p2-3, 2026-05-01, 2026-05-31
+    Scale to 50 farms                          :p2-4, 2026-06-01, 2026-08-31
+    Scale to 10 municipalities                 :p2-5, 2026-06-01, 2026-08-31
+    Scale to 75 buildings                      :p2-6, 2026-06-15, 2026-08-31
+    100% European Sovereignty                  :crit, milestone, 2026-08-01, 1d
+
+    section Phase 3: Optimization (Sep-Dec 2026)
+    BelgBERT optimization (F1 0.92 target)     :p3-1, 2026-09-01, 2026-12-31
+    COSMIC-1 production deployment             :p3-2, 2026-09-15, 2026-12-31
+    Academic papers (3x publications)          :p3-3, 2026-09-01, 2026-12-31
+    Open-source releases (3 repos)             :p3-4, 2026-10-01, 2026-12-31
+
+    section Phase 4: Maturity (2027)
+    Revenue generation €500K                   :p4-1, 2027-01-01, 2027-12-31
+    Cost savings €2M cumulative                :p4-2, 2027-01-01, 2027-12-31
+    CO2 reduction 5K tons                      :p4-3, 2027-01-01, 2027-12-31
+    100 sensors deployed                       :p4-4, 2027-01-01, 2027-12-31
+
+    section Horizon Europe Milestones
+    M4: First deliverables                     :milestone, he1, 2026-04-30, 1d
+    M12: Mid-term review                       :milestone, he2, 2026-12-31, 1d
+    M24: Final deliverables                    :milestone, he3, 2027-12-31, 1d
+```
