@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSMIC Projects - FFT.io | European AI Sovereignty</title>
+    <meta name="description" content="COSMIC Projects - 4 projets Horizon Europe pour une souveraineté IA européenne. BelgBERT, AgriSurvey, CitizenHub, Econergy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --dark-lighter: #1e293b;
+            --text: #e2e8f0;
+            --text-muted: #94a3b8;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .cta-button {
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.3), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(16, 185, 129, 0.15), transparent),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(245, 158, 11, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 2rem;
+            background: var(--dark-lighter);
+        }
+
+        .stats .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .projects-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--dark-lighter);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card:nth-child(1) .project-icon { background: var(--gradient-1); }
+        .project-card:nth-child(2) .project-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .project-card:nth-child(3) .project-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .project-card:nth-child(4) .project-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+        .project-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: var(--primary);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            padding: 6rem 2rem;
+            background: var(--dark-lighter);
+        }
+
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 39px;
+            top: 60px;
+            bottom: -3rem;
+            width: 2px;
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-date {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .timeline-date .month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .timeline-date .year {
+            font-size: 0.6rem;
+            opacity: 0.8;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+        }
+
+        /* Cloud Credits Section */
+        .credits {
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .credits-grid {
+            max-width: 1000px;
+            margin: 2rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .credit-card {
+            background: var(--dark-lighter);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .credit-card img {
+            height: 40px;
+            margin-bottom: 1rem;
+            filter: grayscale(100%) brightness(2);
+            opacity: 0.8;
+        }
+
+        .credit-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .credit-provider {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        .eu-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-item::before {
+                display: none;
+            }
+
+            .timeline-date {
+                width: 100%;
+                height: auto;
+                padding: 1rem;
+                flex-direction: row;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">COSMIC</div>
+            <ul class="nav-links">
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#credits">Cloud Credits</a></li>
+                <li><a href="https://github.com/NextAIgeneration">GitHub</a></li>
+            </ul>
+            <a href="mailto:vincent@fredfrenchtouch.com" class="cta-button">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Horizon Europe 2026</div>
+            <h1>European AI<br><span>Sovereignty</span></h1>
+            <p>4 projets innovants pour une infrastructure IA 100% souveraine. De la recherche agricole intelligente a la formation juridique automatisee.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="cta-button">Explorer les projets</a>
+                <a href="https://github.com/NextAIgeneration/ncp-cosmic-demo" class="btn-secondary">Documentation</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stat">
+                <div class="stat-value">536K</div>
+                <div class="stat-label">Cloud Credits</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Projets COSMIC</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">1.1M</div>
+                <div class="stat-label">Budget Total</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">EU Sovereignty</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <div class="section-header">
+            <h2>Les 4 Projets COSMIC</h2>
+            <p>Une suite complete de solutions IA pour repondre aux defis europeens de demain</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-icon">AI</div>
+                <h3>COSMIC-1 RAG</h3>
+                <p>BelgBERT - Modele multilingue belge (FR/NL/DE) pour l'analyse documentaire et la traduction contextuelle.</p>
+                <div class="project-tags">
+                    <span class="tag">NLP</span>
+                    <span class="tag">Multilingue</span>
+                    <span class="tag">GDPR</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">AG</div>
+                <h3>COSMIC-2 AgriSurvey</h3>
+                <p>IoT agricole avec capteurs LoRaWAN pour l'optimisation des cultures et la prediction meteo.</p>
+                <div class="project-tags">
+                    <span class="tag">IoT</span>
+                    <span class="tag">LoRaWAN</span>
+                    <span class="tag">AgriTech</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">CH</div>
+                <h3>COSMIC-3 CitizenHub</h3>
+                <p>Plateforme citoyenne multilingue pour la participation democratique et les consultations publiques.</p>
+                <div class="project-tags">
+                    <span class="tag">Civic Tech</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Azure</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-icon">EC</div>
+                <h3>COSMIC-4 Econergy</h3>
+                <p>Monitoring energetique intelligent avec predictions Prophet pour la reduction carbone.</p>
+                <div class="project-tags">
+                    <span class="tag">Energy</span>
+                    <span class="tag">ML</span>
+                    <span class="tag">Green</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline" id="timeline">
+        <div class="section-header">
+            <h2>Roadmap 2025-2026</h2>
+            <p>Sprint 6 mois pour maximiser les credits cloud et atteindre la souverainete europeenne</p>
+        </div>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="month">Nov</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Activation 536K Credits</h3>
+                    <p>Microsoft 138K + Google 230K + AWS 92K + NVIDIA 76K</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="month">Dec</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Setup Infrastructure</h3>
+                    <p>BelgBERT data prep + COSMIC sensors deployment</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="month">Jan-Apr</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Training Phase 1</h3>
+                    <p>BelgBERT 3 langues + premiers pilots terrain</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="month">Mai-Jun</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Exit Cloud US</h3>
+                    <p>Migration vers hardware propre EU (Hetzner)</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">
+                    <span class="month">Aug</span>
+                    <span class="year">2026</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>100% Souverainete</h3>
+                    <p>Zero dependance cloud US, 460/mois sustainable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="credits" id="credits">
+        <div class="section-header">
+            <h2>Cloud Credits Actives</h2>
+            <p>536,000 de credits cloud pour accelerer la R&D et maximiser le ROI</p>
+        </div>
+        <div class="credits-grid">
+            <div class="credit-card">
+                <div class="credit-amount">230K</div>
+                <div class="credit-provider">Google Cloud</div>
+            </div>
+            <div class="credit-card">
+                <div class="credit-amount">138K</div>
+                <div class="credit-provider">Microsoft Azure</div>
+            </div>
+            <div class="credit-card">
+                <div class="credit-amount">92K</div>
+                <div class="credit-provider">AWS</div>
+            </div>
+            <div class="credit-card">
+                <div class="credit-amount">76K</div>
+                <div class="credit-provider">NVIDIA</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">FFT.io</div>
+            <div class="footer-links">
+                <a href="mailto:vincent@fredfrenchtouch.com">Contact</a>
+                <a href="https://github.com/NextAIgeneration">GitHub</a>
+                <a href="https://www.fredfrenchtouch.com">Website</a>
+            </div>
+            <div class="eu-badge">
+                <span>100% European Sovereignty</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
